@@ -7,7 +7,7 @@ const defaultReleaseBranch = 'main';
 const cdkVersion = '2.61.1';
 const nodeVersion = '18.16.0';
 const pnpmVersion = '8.6.0';
-const appNameSpace = '@aws-cdk-monorepo';
+const appNameSpace = '@aws-cdk-nx-monorepo';
 const cdkPath = 'cdk';
 
 // Defines the root project that will contain other subprojects packages
@@ -37,7 +37,7 @@ const root = new typescript.TypeScriptProject({
   tsconfig: {
     compilerOptions: {
       paths: {
-        '@aws-cdk-monorepo/shared-lib/*': ['./packages/shared-lib/src/*'],
+        '@aws-cdk-nx-monorepo/shared-lib/*': ['./packages/shared-lib/src/*'],
       },
     },
   },
@@ -80,7 +80,7 @@ new awscdk.AwsCdkTypeScriptApp({
     compilerOptions: {
       rootDir: '.',
       paths: {
-        '@aws-cdk-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
       },
     },
     include: [`${cdkPath}/**/*.ts`],
@@ -109,7 +109,7 @@ new awscdk.AwsCdkTypeScriptApp({
     compilerOptions: {
       rootDir: '.',
       paths: {
-        '@aws-cdk-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
       },
     },
     include: [`${cdkPath}/**/*.ts`],

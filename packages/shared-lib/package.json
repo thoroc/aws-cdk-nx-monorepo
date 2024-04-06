@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk-monorepo/shared-lib",
+  "name": "@aws-cdk-nx-monorepo/shared-lib",
   "scripts": {
     "build": "pnpm dlx projen build",
     "compile": "pnpm dlx projen compile",

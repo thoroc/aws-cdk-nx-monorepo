@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk-monorepo/service-a",
+  "name": "@aws-cdk-nx-monorepo/service-a",
   "scripts": {
     "build": "pnpm dlx projen build",
     "bundle": "pnpm dlx projen bundle",
@@ -39,7 +39,7 @@
     "typescript": "^5.4.4"
   },
   "dependencies": {
-    "@aws-cdk-monorepo/shared-lib": "workspace:*",
+    "@aws-cdk-nx-monorepo/shared-lib": "workspace:*",
     "aws-cdk-lib": "^2.61.1",
     "constructs": "^10.0.5"
   },

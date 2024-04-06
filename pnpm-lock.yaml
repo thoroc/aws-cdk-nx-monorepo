@@ -35,7 +35,7 @@ importers:
 
   packages/service-a:
     dependencies:
-      '@aws-cdk-monorepo/shared-lib':
+      '@aws-cdk-nx-monorepo/shared-lib':
         specifier: workspace:*
         version: link:../shared-lib
       aws-cdk-lib:
@@ -93,7 +93,7 @@ importers:
 
   packages/service-b:
     dependencies:
-      '@aws-cdk-monorepo/shared-lib':
+      '@aws-cdk-nx-monorepo/shared-lib':
         specifier: workspace:*
         version: link:../shared-lib
       aws-cdk-lib:

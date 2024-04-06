@@ -1,5 +1,5 @@
 {
-  "name": "@aws-cdk-monorepo/root",
+  "name": "@aws-cdk-nx-monorepo/root",
   "scripts": {
     "build": "pnpm dlx projen build",
     "clobber": "pnpm dlx projen clobber",

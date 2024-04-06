@@ -67,7 +67,7 @@
       "type": "build"
     },
     {
-      "name": "@aws-cdk-monorepo/shared-lib",
+      "name": "@aws-cdk-nx-monorepo/shared-lib",
       "version": "workspace:*",
       "type": "runtime"
     },
