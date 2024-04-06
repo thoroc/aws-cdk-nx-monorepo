@@ -1,12 +1,11 @@
 {
-  "app": "npx ts-node -P tsconfig.json --prefer-ts-exts src/main.ts",
+  "app": "npx ts-node -P tsconfig.json --prefer-ts-exts src/cdk/bin/main.ts",
   "requireApproval": "never",
   "output": "cdk.out",
   "build": "pnpm dlx projen bundle",
   "watch": {
     "include": [
-      "src/**/*.ts",
-      "test/**/*.ts"
+      "cdk/**/*.ts"
     ],
     "exclude": [
       "README.md",

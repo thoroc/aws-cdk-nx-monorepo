@@ -15,7 +15,7 @@ export class Nx extends Component {
         extends: 'nx/presets/npm.json',
         tasksRunnerOptions: {
           default: {
-            runner: '@nrwl/workspace/tasks-runners/default',
+            runner: '@nx/workspace/tasks-runners/default',
             options: {
               // By default nx uses a local cache to prevent re-running targets
 
