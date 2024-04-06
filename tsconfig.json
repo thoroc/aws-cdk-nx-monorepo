@@ -25,7 +25,12 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2019"
+    "target": "ES2019",
+    "paths": {
+      "@aws-cdk-monorepo/shared-lib/*": [
+        "./packages/shared-lib/src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts"

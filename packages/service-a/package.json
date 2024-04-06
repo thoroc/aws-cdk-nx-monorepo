@@ -1,5 +1,8 @@
 {
   "name": "@aws-cdk-monorepo/service-a",
+  "bin": {
+    "main.ts": "bin/main.ts"
+  },
   "scripts": {
     "build": "pnpm dlx projen build",
     "bundle": "pnpm dlx projen bundle",

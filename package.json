@@ -6,6 +6,7 @@
     "compile": "pnpm dlx projen compile",
     "default": "pnpm dlx projen default",
     "eject": "pnpm dlx projen eject",
+    "nx:build-all": "pnpm dlx projen nx:build-all",
     "package": "pnpm dlx projen package",
     "post-compile": "pnpm dlx projen post-compile",
     "post-upgrade": "pnpm dlx projen post-upgrade",
@@ -16,8 +17,11 @@
     "projen": "pnpm dlx projen"
   },
   "devDependencies": {
+    "@nrwl/devkit": "^18.2.3",
+    "@nrwl/workspace": "^18.2.3",
     "@types/node": "^18",
     "constructs": "^10.0.0",
+    "nx": "^18.2.3",
     "projen": "^0.80.19",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.4"

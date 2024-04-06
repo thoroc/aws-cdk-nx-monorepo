@@ -1,16 +1,17 @@
 import { javascript, typescript, awscdk } from 'projen';
 import { PnpmWorkspace } from './projenrc/pnpm';
 import { VscodeSettings } from './projenrc/vscode';
+import { Nx } from './projenrc/nx';
 
 const defaultReleaseBranch = 'main';
 const cdkVersion = '2.61.1';
 const nodeVersion = '18.16.0';
 const pnpmVersion = '8.6.0';
-const appName = 'aws-cdk-monorepo';
+const appNameSpace = '@aws-cdk-monorepo';
 
 // Defines the root project that will contain other subprojects packages
 const root = new typescript.TypeScriptProject({
-  name: `@${appName}/root`,
+  name: `${appNameSpace}/root`,
   defaultReleaseBranch,
   packageManager: javascript.NodePackageManager.PNPM,
   projenCommand: 'pnpm dlx projen',
@@ -30,12 +31,21 @@ const root = new typescript.TypeScriptProject({
   depsUpgradeOptions: { workflow: false },
   buildWorkflow: false,
   release: false,
+
+  // Add the shared-lib path to the root tsconfig paths
+  tsconfig: {
+    compilerOptions: {
+      paths: {
+        '@aws-cdk-monorepo/shared-lib/*': ['./packages/shared-lib/src/*'],
+      },
+    },
+  },
 });
 
 // Defines the subproject for shared lib
 new typescript.TypeScriptProject({
   parent: root,
-  name: `@${appName}/shared-lib`,
+  name: `${appNameSpace}/shared-lib`,
   outdir: './packages/shared-lib',
   defaultReleaseBranch,
   sampleCode: false,
@@ -50,8 +60,8 @@ new typescript.TypeScriptProject({
 // Defines the subproject for 'service-a'
 new awscdk.AwsCdkTypeScriptApp({
   parent: root,
-  name: `@${appName}/service-a`,
-  deps: [`@${appName}/shared-lib@workspace:*`],
+  name: `${appNameSpace}/service-a`,
+  deps: [`${appNameSpace}/shared-lib@workspace:*`],
   outdir: './packages/service-a',
   cdkVersion,
   defaultReleaseBranch,
@@ -63,13 +73,22 @@ new awscdk.AwsCdkTypeScriptApp({
   packageManager: root.package.packageManager,
   projenCommand: root.projenCommand,
   minNodeVersion: root.minNodeVersion,
+  tsconfig: {
+    compilerOptions: {
+      rootDir: '.',
+      paths: {
+        '@aws-cdk-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+      },
+    },
+    include: ['cdk/**/*.ts'],
+  },
 });
 
 // Defines the subproject for 'service-b'
 new awscdk.AwsCdkTypeScriptApp({
   parent: root,
-  name: `@${appName}/service-b`,
-  deps: [`@${appName}/shared-lib@workspace:*`],
+  name: `${appNameSpace}/service-b`,
+  deps: [`${appNameSpace}/shared-lib@workspace:*`],
   outdir: './packages/service-b',
   cdkVersion,
   defaultReleaseBranch,
@@ -81,6 +100,15 @@ new awscdk.AwsCdkTypeScriptApp({
   packageManager: root.package.packageManager,
   projenCommand: root.projenCommand,
   minNodeVersion: root.minNodeVersion,
+  tsconfig: {
+    compilerOptions: {
+      rootDir: '.',
+      paths: {
+        '@aws-cdk-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+      },
+    },
+    include: ['cdk/**/*.ts'],
+  },
 });
 
 root.package.addField('packageManager', `pnpm@${pnpmVersion}`);
@@ -88,5 +116,6 @@ root.npmrc.addConfig('auto-install-peers', 'true');
 
 new PnpmWorkspace(root);
 new VscodeSettings(root);
+new Nx(root);
 
 root.synth(); // Synthesize all projects

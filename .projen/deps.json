@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@nrwl/devkit",
+      "type": "build"
+    },
+    {
+      "name": "@nrwl/workspace",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^18",
       "type": "build"
@@ -8,6 +16,10 @@
     {
       "name": "constructs",
       "version": "^10.0.0",
+      "type": "build"
+    },
+    {
+      "name": "nx",
       "type": "build"
     },
     {

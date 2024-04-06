@@ -104,6 +104,15 @@
         }
       ]
     },
+    "nx:build-all": {
+      "name": "nx:build-all",
+      "description": "Build all projects",
+      "steps": [
+        {
+          "exec": "pnpm nx run-many --target build"
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",
@@ -140,13 +149,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=projen,ts-node,typescript"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@nrwl/devkit,@nrwl/workspace,nx,projen,ts-node,typescript"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/node constructs projen ts-node typescript"
+          "exec": "pnpm update @nrwl/devkit @nrwl/workspace @types/node constructs nx projen ts-node typescript"
         },
         {
           "exec": "pnpm dlx projen"
