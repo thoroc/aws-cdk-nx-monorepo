@@ -1,8 +1,9 @@
 import { typescript } from 'projen';
-// import { NodePackageManager } from 'projen/lib/javascript';
 import { Nx } from './nx';
 import { VscodeSettings } from './vscode';
 import { PnpmWorkspace } from './pnpm';
+import { JestConfigTs } from './jest-config';
+import { JestPresetJs } from './jest-preset';
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   pnpmVersion: string;
@@ -39,6 +40,8 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       buildWorkflow: false,
       release: false,
 
+      devDeps: ['@nx/jest', '@nx/node', '@nx/workspace'],
+
       // Add the shared-lib path to the root tsconfig paths
       tsconfig: {
         compilerOptions: {
@@ -66,5 +69,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
     new PnpmWorkspace(this);
     new VscodeSettings(this);
     new Nx(this);
+    new JestConfigTs(this);
+    new JestPresetJs(this);
   }
 }

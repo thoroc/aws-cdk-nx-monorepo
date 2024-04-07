@@ -19,6 +19,9 @@
   "devDependencies": {
     "@nrwl/devkit": "^18.2.3",
     "@nrwl/workspace": "^18.2.3",
+    "@nx/jest": "^18.2.3",
+    "@nx/node": "^18.2.3",
+    "@nx/workspace": "^18.2.3",
     "@types/node": "^18",
     "constructs": "^10.0.0",
     "nx": "^18.2.3",

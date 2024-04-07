@@ -1,21 +1,21 @@
 import { Component, SourceCode } from 'projen';
-import { BackendTsProject } from './backend-project';
+import { NxMonorepoChildProject } from './nx-monorepo-child-project';
 
 export class JestConfigTs extends Component {
-  constructor(rootProject: BackendTsProject) {
-    super(rootProject);
+  constructor(project: NxMonorepoChildProject) {
+    super(project);
 
-    new SourceCode(rootProject, 'jest.config.ts', {}).line(
+    new SourceCode(project, 'jest.config.ts', {}).line(
       `/* eslint-disable */
 export default {
-  displayName: '${rootProject.displayName}',
+  displayName: '${project.displayName}',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/${rootProject.displayName}',
+  coverageDirectory: '../../coverage/packages/${project.displayName}',
 };`
     );
   }

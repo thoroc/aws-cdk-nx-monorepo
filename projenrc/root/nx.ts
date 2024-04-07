@@ -25,6 +25,20 @@ export class Nx extends Component {
             },
           },
         },
+
+        $schema: './node_modules/nx/schemas/nx-schema.json',
+        namedInputs: {
+          default: ['{projectRoot}/**/*', 'sharedGlobals'],
+          production: [
+            'default',
+            '!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)',
+            '!{projectRoot}/jest.config.[jt]s',
+            '!{projectRoot}/src/test-setup.[jt]s',
+            '!{projectRoot}/test-setup.[jt]s',
+          ],
+          sharedGlobals: [],
+        },
+
         targetDefaults: {
           build: {
             // Specifies the build target of a project is dependent on the
@@ -58,10 +72,19 @@ export class Nx extends Component {
           deploy: { dependsOn: ['build'] },
         },
 
+        plugins: [
+          {
+            plugin: '@nx/jest/plugin',
+            options: {
+              targetName: 'test',
+            },
+          },
+        ],
+
         // This is used when running 'nx affected ….' command to selectively
         // run targets against only those packages that have changed since
         // lastest commit on origin/main
-        affected: { defaultBase: 'origin/main' },
+        // affected: { defaultBase: 'origin/main' },
       },
     });
 

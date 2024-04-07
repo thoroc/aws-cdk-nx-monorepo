@@ -9,6 +9,18 @@
       "type": "build"
     },
     {
+      "name": "@nx/jest",
+      "type": "build"
+    },
+    {
+      "name": "@nx/node",
+      "type": "build"
+    },
+    {
+      "name": "@nx/workspace",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
       "version": "^18",
       "type": "build"

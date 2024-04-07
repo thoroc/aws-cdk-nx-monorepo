@@ -12,6 +12,8 @@
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
 /.vscode/settings.json linguist-generated
+/jest.config.ts linguist-generated
+/jest.preset.js linguist-generated
 /nx.json linguist-generated
 /package.json linguist-generated
 /pnpm-lock.yaml linguist-generated
