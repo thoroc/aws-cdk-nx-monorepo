@@ -1,9 +1,9 @@
-import { typescript } from 'projen';
-import { Nx } from './nx';
-import { VscodeSettings } from './vscode';
-import { PnpmWorkspace } from './pnpm';
-import { EslintFlatConfig } from './eslint-config';
-import { NxMonorepoChildProject } from '../child/nx-monorepo-child-project';
+import { typescript } from "projen";
+import { Nx } from "./nx";
+import { VscodeSettings } from "./vscode";
+import { PnpmWorkspace } from "./pnpm";
+import { EslintFlatConfig } from "./eslint-config";
+import { NxMonorepoChildProject } from "../child/nx-monorepo-child-project";
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   pnpmVersion: string;
@@ -23,7 +23,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       name: props.name,
       defaultReleaseBranch: props.defaultReleaseBranch,
       packageManager: props.packageManager,
-      projenCommand: 'pnpm dlx projen',
+      projenCommand: "pnpm dlx projen",
       minNodeVersion: props.nodeVersion,
       projenrcTs: true,
       sampleCode: false,
@@ -34,6 +34,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       // config at the root is out of scope for this walkthrough
       eslint: false,
       jest: false,
+      prettier: true,
 
       // Disable default github actions workflows generated
       // by projen as we will generate our own later (that uses nx)
@@ -41,21 +42,21 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       buildWorkflow: false,
       release: false,
 
-      devDeps: ['@nx/jest', '@nx/node', '@nx/workspace'],
+      devDeps: ["@nx/node", "@nx/js", "@nx/workspace", "nx"],
 
       disableTsconfig: true,
-      tsconfigDevFile: 'tsconfig.base.json',
+      tsconfigDevFile: "tsconfig.base.json",
       tsconfigDev: {
         compilerOptions: {
-          rootDir: '.',
-          baseUrl: '.',
+          rootDir: ".",
+          baseUrl: ".",
           paths: {
-            '@aws-cdk-nx-monorepo/shared-lib/*': [
-              './packages/shared-lib/src/*',
+            "@aws-cdk-nx-monorepo/shared-lib/*": [
+              "./packages/shared-lib/src/*",
             ],
           },
         },
-        exclude: ['packages/**/jest.config.ts'],
+        exclude: ["packages/**/jest.config.ts"],
       },
       // Add the shared-lib path to the root tsconfig paths
       // tsconfig: {
@@ -79,8 +80,8 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
   }
 
   preSynthesize(): void {
-    this.package.addField('packageManager', `pnpm@${this.pnpmVersion}`);
-    this.npmrc.addConfig('auto-install-peers', 'true');
+    this.package.addField("packageManager", `pnpm@${this.pnpmVersion}`);
+    this.npmrc.addConfig("auto-install-peers", "true");
 
     new PnpmWorkspace(this);
     new VscodeSettings(this);

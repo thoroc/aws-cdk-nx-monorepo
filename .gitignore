@@ -30,6 +30,8 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.github/pull_request_template.md
+!/.prettierignore
+!/.prettierrc.json
 !/.npmrc
 !/test/
 !/tsconfig.base.json

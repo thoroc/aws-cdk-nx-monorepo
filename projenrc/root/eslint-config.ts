@@ -1,21 +1,31 @@
-import { Component, SourceCode } from 'projen';
-import { NxMonorepoProject } from './nx-monorepo-project';
+import { Component, SourceCode } from "projen";
+import { NxMonorepoProject } from "./nx-monorepo-project";
 
 export class EslintFlatConfig extends Component {
   constructor(project: NxMonorepoProject) {
     super(project);
 
     project.addDevDeps(
-      '@eslint/eslintrc',
-      '@nx/eslint-plugin',
-      '@eslint/js',
-      'eslint',
-      'eslint-plugin-cdk',
-      '@typescript-eslint/eslint-plugin',
-      '@typescript-eslint/parser'
+      "@eslint/eslintrc",
+      "@eslint/js",
+      "@nx/eslint",
+      "@nx/eslint-plugin",
+      "@nx/linter",
+      "@typescript-eslint/eslint-plugin",
+      "@typescript-eslint/parser",
+      "eslint",
+      "eslint-config-prettier",
+      "eslint-plugin-cdk",
+      "prettier",
+      "prettier-plugin-organize-imports",
     );
 
-    const config = new SourceCode(project, 'eslint.config.js', {
+    project.prettier?.addOverride({
+      files: "*.js, *.jsx, *.ts, *.tsx",
+      options: { plugins: ["prettier-plugin-organize-imports"] },
+    });
+
+    const config = new SourceCode(project, "eslint.config.js", {
       readonly: true,
     });
 
@@ -70,13 +80,13 @@ module.exports = [
   preSynthesize(): void {
     (this.project as NxMonorepoProject).childProjects.forEach((child) => {
       child.addDevDeps(
-        'eslint',
-        'eslint-plugin-cdk',
-        '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/parser'
+        "eslint",
+        "eslint-plugin-cdk",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
       );
 
-      const config = new SourceCode(child, 'eslint.config.js', {
+      const config = new SourceCode(child, "eslint.config.js", {
         readonly: true,
       });
 

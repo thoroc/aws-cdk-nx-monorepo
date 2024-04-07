@@ -17,6 +17,10 @@
       "type": "build"
     },
     {
+      "name": "@nx/eslint",
+      "type": "build"
+    },
+    {
       "name": "@nx/eslint-plugin",
       "type": "build"
     },
@@ -25,11 +29,23 @@
       "type": "build"
     },
     {
+      "name": "@nx/js",
+      "type": "build"
+    },
+    {
+      "name": "@nx/linter",
+      "type": "build"
+    },
+    {
       "name": "@nx/node",
       "type": "build"
     },
     {
       "name": "@nx/workspace",
+      "type": "build"
+    },
+    {
+      "name": "@types/jest",
       "type": "build"
     },
     {
@@ -55,7 +71,23 @@
       "type": "build"
     },
     {
+      "name": "eslint-config-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-plugin-cdk",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-jest",
+      "type": "build"
+    },
+    {
+      "name": "jest",
+      "type": "build"
+    },
+    {
+      "name": "jest-environment-node",
       "type": "build"
     },
     {
@@ -63,7 +95,19 @@
       "type": "build"
     },
     {
+      "name": "prettier",
+      "type": "build"
+    },
+    {
+      "name": "prettier-plugin-organize-imports",
+      "type": "build"
+    },
+    {
       "name": "projen",
+      "type": "build"
+    },
+    {
+      "name": "ts-jest",
       "type": "build"
     },
     {
