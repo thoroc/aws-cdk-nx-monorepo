@@ -1,7 +1,6 @@
 import { javascript, typescript, awscdk } from 'projen';
-import { PnpmWorkspace } from './projenrc/pnpm';
-import { VscodeSettings } from './projenrc/vscode';
-import { Nx } from './projenrc/nx';
+import { BackendTsProject } from './projenrc/backend-project';
+import { NxMonorepoProject } from './projenrc/nx-monorepo-project';
 
 const defaultReleaseBranch = 'main';
 const cdkVersion = '2.61.1';
@@ -11,37 +10,17 @@ const appNameSpace = '@aws-cdk-nx-monorepo';
 const cdkPath = 'cdk';
 
 // Defines the root project that will contain other subprojects packages
-const root = new typescript.TypeScriptProject({
-  name: `${appNameSpace}/root`,
+const root = new NxMonorepoProject({
+  name: 'aws-cdk-nx-monorepo',
   defaultReleaseBranch,
   packageManager: javascript.NodePackageManager.PNPM,
-  projenCommand: 'pnpm dlx projen',
-  minNodeVersion: nodeVersion,
-  projenrcTs: true,
-  sampleCode: false,
-  licensed: false,
-
-  // Jest and eslint are disabled at the root as they will be
-  // configured by each subproject. Using a single jest/eslint
-  // config at the root is out of scope for this walkthrough
-  eslint: false,
-  jest: false,
-
-  // Disable default github actions workflows generated
-  // by projen as we will generate our own later (that uses nx)
-  depsUpgradeOptions: { workflow: false },
-  buildWorkflow: false,
-  release: false,
-
-  // Add the shared-lib path to the root tsconfig paths
-  tsconfig: {
-    compilerOptions: {
-      paths: {
-        '@aws-cdk-nx-monorepo/shared-lib/*': ['./packages/shared-lib/src/*'],
-      },
-    },
-  },
+  cdkVersion,
+  nodeVersion,
 });
+
+// root
+//   .tryFindObjectFile('tsconfig.json')
+//   ?.addOverride('include', ['packages/**/*']);
 
 // Defines the subproject for shared lib
 new typescript.TypeScriptProject({
@@ -116,11 +95,27 @@ new awscdk.AwsCdkTypeScriptApp({
   },
 });
 
+new BackendTsProject({
+  parent: root,
+  name: 'backend',
+  deps: [`${appNameSpace}/shared-lib@workspace:*`],
+  cdkPath,
+  cdkVersion,
+  defaultReleaseBranch,
+  tsconfig: {
+    compilerOptions: {
+      paths: {
+        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+      },
+    },
+  },
+});
+
 root.package.addField('packageManager', `pnpm@${pnpmVersion}`);
 root.npmrc.addConfig('auto-install-peers', 'true');
 
-new PnpmWorkspace(root);
-new VscodeSettings(root);
-new Nx(root);
+// new PnpmWorkspace(root);
+// new VscodeSettings(root);
+// new Nx(root);
 
 root.synth(); // Synthesize all projects

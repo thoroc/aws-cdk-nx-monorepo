@@ -4,3 +4,4 @@ packages:
   - packages/shared-lib
   - packages/service-a
   - packages/service-b
+  - packages/backend
