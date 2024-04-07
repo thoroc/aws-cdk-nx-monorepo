@@ -32,8 +32,7 @@ jspm_packages/
 !/.github/pull_request_template.md
 !/.npmrc
 !/test/
-!/tsconfig.json
-!/tsconfig.dev.json
+!/tsconfig.base.json
 !/src/
 /lib
 /dist/

@@ -40,16 +40,30 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
 
       devDeps: ['@nx/jest', '@nx/node', '@nx/workspace'],
 
-      // Add the shared-lib path to the root tsconfig paths
-      tsconfig: {
+      disableTsconfig: true,
+      tsconfigDevFile: 'tsconfig.base.json',
+      tsconfigDev: {
         compilerOptions: {
+          rootDir: '.',
+          baseUrl: '.',
           paths: {
             '@aws-cdk-nx-monorepo/shared-lib/*': [
               './packages/shared-lib/src/*',
             ],
           },
         },
+        exclude: ['packages/**/jest.config.ts'],
       },
+      // Add the shared-lib path to the root tsconfig paths
+      // tsconfig: {
+      //   compilerOptions: {
+      //     paths: {
+      //       '@aws-cdk-nx-monorepo/shared-lib/*': [
+      //         './packages/shared-lib/src/*',
+      //       ],
+      //     },
+      //   },
+      // },
     });
 
     const { name, defaultReleaseBranch, cdkVersion, pnpmVersion } = props;
