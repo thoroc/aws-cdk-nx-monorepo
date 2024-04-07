@@ -94,7 +94,7 @@ module.exports = [
         description: "Runs eslint against the codebase",
         steps: [
           {
-            exec: "eslint --c .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools",
+            exec: "eslint --fix --no-error-on-unmatched-pattern $@ src test build-tools",
             receiveArgs: true,
           },
         ],

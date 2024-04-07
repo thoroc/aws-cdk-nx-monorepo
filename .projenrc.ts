@@ -23,7 +23,7 @@ const monorepo = new NxMonorepoProject({
 //   ?.addOverride('include', ['packages/**/*']);
 
 // Defines the subproject for shared lib
-new typescript.TypeScriptProject({
+const sharedLib = new typescript.TypeScriptProject({
   parent: monorepo,
   name: `${appNameSpace}/shared-lib`,
   outdir: "./packages/shared-lib",
@@ -87,6 +87,20 @@ new BackendTsProject({
       },
     },
   },
+});
+
+const sharedLibTasks = sharedLib.tryFindObjectFile(
+  "./packages/shared-lib/.projen/tasks.json",
+);
+
+sharedLibTasks?.addOverride("tasks.eslint", {
+  description: "Runs eslint against the codebase",
+  steps: [
+    {
+      exec: "eslint --fix --no-error-on-unmatched-pattern $@ src test build-tools",
+      receiveArgs: true,
+    },
+  ],
 });
 
 monorepo.synth(); // Synthesize all projects
