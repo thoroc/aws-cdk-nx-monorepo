@@ -22,7 +22,10 @@ export class EslintFlatConfig extends Component {
 
     project.prettier?.addOverride({
       files: "*.js, *.jsx, *.ts, *.tsx",
-      options: { plugins: ["prettier-plugin-organize-imports"] },
+      options: {
+        plugins: ["prettier-plugin-organize-imports"],
+        singleQuote: true,
+      },
     });
 
     const config = new SourceCode(project, "eslint.config.js", {

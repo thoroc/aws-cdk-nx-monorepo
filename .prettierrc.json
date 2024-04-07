@@ -5,7 +5,8 @@
       "options": {
         "plugins": [
           "prettier-plugin-organize-imports"
-        ]
+        ],
+        "singleQuote": true
       }
     }
   ]

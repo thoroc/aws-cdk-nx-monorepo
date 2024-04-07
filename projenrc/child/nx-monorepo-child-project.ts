@@ -1,9 +1,8 @@
-import { awscdk } from 'projen';
-import { NxMonorepoProject } from '../root/nx-monorepo-project';
-import { JestConfigTs } from './jest-config';
-import { tsConfigApp } from './tsconfig-app';
-import { tsConfigSpec } from './tsconfig-spec';
-import { TypescriptConfigExtends } from 'projen/lib/javascript';
+import { awscdk } from "projen";
+import { NxMonorepoProject } from "../root/nx-monorepo-project";
+import { JestConfigTs } from "./jest-config";
+import { TypescriptConfigExtends } from "projen/lib/javascript";
+import { tsConfigApp, tsConfigSpec } from "./tsconfig";
 
 export interface NxMonorepoChildProjectOptions
   extends awscdk.AwsCdkTypeScriptAppOptions {
@@ -30,7 +29,7 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
       jest: false,
       tsconfig: {
         extends: TypescriptConfigExtends.fromPaths([
-          '../../tsconfig.base.json',
+          "../../tsconfig.base.json",
         ]),
       },
       disableTsconfigDev: true,
@@ -53,19 +52,19 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
   preSynthesize(): void {
     new JestConfigTs(this);
 
-    const tsConfig = this.tryFindObjectFile('tsconfig.json');
-    tsConfig?.addOverride('file', []);
-    tsConfig?.addOverride('include', []);
-    tsConfig?.addOverride('references', [
+    const tsConfig = this.tryFindObjectFile("tsconfig.json");
+    tsConfig?.addOverride("file", []);
+    tsConfig?.addOverride("include", []);
+    tsConfig?.addOverride("references", [
       {
-        path: './tsconfig.app.json',
+        path: "./tsconfig.app.json",
       },
       {
-        path: './tsconfig.spec.json',
+        path: "./tsconfig.spec.json",
       },
     ]);
-    tsConfig?.addDeletionOverride('compilerOptions');
-    tsConfig?.addOverride('compilerOptions', {
+    tsConfig?.addDeletionOverride("compilerOptions");
+    tsConfig?.addOverride("compilerOptions", {
       rootDir: undefined,
       outDir: undefined,
       alwaysStrict: undefined,
@@ -90,7 +89,7 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
       stripInternal: undefined,
       target: undefined,
     });
-    tsConfig?.addOverride('exclude', undefined);
+    tsConfig?.addOverride("exclude", undefined);
 
     // new tsConfig(this);
     new tsConfigApp(this);
