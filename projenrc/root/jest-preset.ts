@@ -5,7 +5,7 @@ export class JestPresetJs extends Component {
   constructor(rootProject: NxMonorepoProject) {
     super(rootProject);
 
-    new SourceCode(rootProject, 'jest.preset.js', {}).line(
+    new SourceCode(rootProject, 'jest.preset.js', { readonly: true }).line(
       `const nxPreset = require('@nx/jest/preset').default;
 
 module.exports = { ...nxPreset };`

@@ -5,7 +5,7 @@ export class JestConfigTs extends Component {
   constructor(rootProject: NxMonorepoProject) {
     super(rootProject);
 
-    new SourceCode(rootProject, 'jest.config.ts', {}).line(
+    new SourceCode(rootProject, 'jest.config.ts', { readonly: true }).line(
       `import { getJestProjectsAsync } from '@nx/jest';
 
 export default async () => ({

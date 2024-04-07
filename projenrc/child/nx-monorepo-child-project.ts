@@ -23,6 +23,7 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
       defaultReleaseBranch: props.parent.defaultReleaseBranch,
       sampleCode: false,
       licensed: false,
+      eslint: false,
       requireApproval: awscdk.ApprovalLevel.NEVER,
       appEntrypoint: `${props.cdkPath}/bin/main.ts`,
       watchIncludes: [`${props.cdkPath}/**/*.ts`],

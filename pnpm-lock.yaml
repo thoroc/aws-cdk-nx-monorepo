@@ -93,15 +93,9 @@ importers:
       eslint:
         specifier: ^8
         version: 8.57.0
-      eslint-import-resolver-typescript:
-        specifier: ^3.6.1
-        version: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-plugin-cdk:
         specifier: ^1.8.0
         version: 1.8.0(@typescript-eslint/eslint-plugin@6.21.0)(eslint@8.57.0)(typescript@5.4.4)
-      eslint-plugin-import:
-        specifier: ^2.29.1
-        version: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       projen:
         specifier: ^0.80.19
         version: 0.80.19(constructs@10.3.0)

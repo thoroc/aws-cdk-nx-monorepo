@@ -15,7 +15,9 @@ export class EslintFlatConfig extends Component {
       '@typescript-eslint/parser'
     );
 
-    const config = new SourceCode(project, 'eslint.config.js');
+    const config = new SourceCode(project, 'eslint.config.js', {
+      readonly: true,
+    });
 
     config.line(`
 const { FlatCompat } = require('@eslint/eslintrc');
@@ -74,7 +76,9 @@ module.exports = [
         '@typescript-eslint/parser'
       );
 
-      const config = new SourceCode(child, 'eslint.config.js');
+      const config = new SourceCode(child, 'eslint.config.js', {
+        readonly: true,
+      });
 
       config.line(`const baseConfig = require('../../eslint.config.js');
 
