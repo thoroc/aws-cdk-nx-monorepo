@@ -41,6 +41,6 @@ jspm_packages/
 !/.vscode/settings.json
 !/nx.json
 .nx
+!/.projenrc.ts
 !/jest.config.ts
 !/jest.preset.js
-!/.projenrc.ts

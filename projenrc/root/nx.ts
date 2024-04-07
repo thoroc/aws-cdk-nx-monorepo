@@ -1,4 +1,7 @@
 import { Component, JsonFile, typescript } from 'projen';
+import { JestConfigTs } from './jest-config';
+import { JestPresetJs } from './jest-preset';
+import { NxMonorepoProject } from './nx-monorepo-project';
 
 // Custom projen component that configures nx.
 
@@ -94,5 +97,10 @@ export class Nx extends Component {
     });
 
     this.project.gitignore.exclude('.nx');
+  }
+
+  preSynthesize(): void {
+    new JestConfigTs(this.project as NxMonorepoProject);
+    new JestPresetJs(this.project as NxMonorepoProject);
   }
 }

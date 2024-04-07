@@ -2,8 +2,6 @@ import { typescript } from 'projen';
 import { Nx } from './nx';
 import { VscodeSettings } from './vscode';
 import { PnpmWorkspace } from './pnpm';
-import { JestConfigTs } from './jest-config';
-import { JestPresetJs } from './jest-preset';
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   pnpmVersion: string;
@@ -69,7 +67,5 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
     new PnpmWorkspace(this);
     new VscodeSettings(this);
     new Nx(this);
-    new JestConfigTs(this);
-    new JestPresetJs(this);
   }
 }
