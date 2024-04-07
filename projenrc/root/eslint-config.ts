@@ -89,6 +89,17 @@ module.exports = [
         "@typescript-eslint/parser",
       );
 
+      child.tasks.removeTask("eslint");
+      child.tasks.addTask("eslint", {
+        description: "Runs eslint against the codebase",
+        steps: [
+          {
+            exec: "eslint --c .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools",
+            receiveArgs: true,
+          },
+        ],
+      });
+
       const config = new SourceCode(child, "eslint.config.js", {
         readonly: true,
       });

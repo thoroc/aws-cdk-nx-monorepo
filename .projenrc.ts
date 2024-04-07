@@ -1,16 +1,16 @@
-import { javascript, typescript, awscdk } from 'projen';
-import { NxMonorepoProject, BackendTsProject } from './projenrc';
+import { javascript, typescript } from "projen";
+import { NxMonorepoProject, BackendTsProject } from "./projenrc";
 
-const defaultReleaseBranch = 'main';
-const cdkVersion = '2.61.1';
-const nodeVersion = '18.16.0';
-const pnpmVersion = '8.6.0';
-const appNameSpace = '@aws-cdk-nx-monorepo';
-const cdkPath = 'cdk';
+const defaultReleaseBranch = "main";
+const cdkVersion = "2.61.1";
+const nodeVersion = "18.16.0";
+const pnpmVersion = "8.6.0";
+const appNameSpace = "@aws-cdk-nx-monorepo";
+const cdkPath = "cdk";
 
 // Defines the root of the monorepo that will contain other subprojects packages
 const monorepo = new NxMonorepoProject({
-  name: 'aws-cdk-nx-monorepo',
+  name: "aws-cdk-nx-monorepo",
   defaultReleaseBranch,
   packageManager: javascript.NodePackageManager.PNPM,
   cdkVersion,
@@ -26,7 +26,7 @@ const monorepo = new NxMonorepoProject({
 new typescript.TypeScriptProject({
   parent: monorepo,
   name: `${appNameSpace}/shared-lib`,
-  outdir: './packages/shared-lib',
+  outdir: "./packages/shared-lib",
   defaultReleaseBranch,
   sampleCode: false,
   licensed: false,
@@ -38,28 +38,18 @@ new typescript.TypeScriptProject({
 });
 
 // Defines the subproject for 'service-a'
-new awscdk.AwsCdkTypeScriptApp({
+new BackendTsProject({
   parent: monorepo,
-  name: `${appNameSpace}/service-a`,
+  name: "service-a",
   deps: [`${appNameSpace}/shared-lib@workspace:*`],
-  outdir: './packages/service-a',
+  cdkPath,
   cdkVersion,
   defaultReleaseBranch,
-  sampleCode: false,
-  licensed: false,
-  requireApproval: awscdk.ApprovalLevel.NEVER,
-  appEntrypoint: `${cdkPath}/bin/main.ts`,
-  watchIncludes: [`${cdkPath}/**/*.ts`],
-
-  // Use same settings from monorepo project
-  packageManager: monorepo.package.packageManager,
-  projenCommand: monorepo.projenCommand,
-  minNodeVersion: monorepo.minNodeVersion,
   tsconfig: {
     compilerOptions: {
-      rootDir: '.',
+      rootDir: ".",
       paths: {
-        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+        "@aws-cdk-nx-monorepo/shared-lib/*": ["../shared-lib/src/*"],
       },
     },
     include: [`${cdkPath}/**/*.ts`],
@@ -67,37 +57,9 @@ new awscdk.AwsCdkTypeScriptApp({
 });
 
 // Defines the subproject for 'service-b'
-new awscdk.AwsCdkTypeScriptApp({
-  parent: monorepo,
-  name: `${appNameSpace}/service-b`,
-  deps: [`${appNameSpace}/shared-lib@workspace:*`],
-  outdir: './packages/service-b',
-  cdkVersion,
-  defaultReleaseBranch,
-  sampleCode: false,
-  licensed: false,
-  requireApproval: awscdk.ApprovalLevel.NEVER,
-  appEntrypoint: `${cdkPath}/bin/main.ts`,
-  watchIncludes: [`${cdkPath}/**/*.ts`],
-
-  // Use same settings from monorepo project
-  packageManager: monorepo.package.packageManager,
-  projenCommand: monorepo.projenCommand,
-  minNodeVersion: monorepo.minNodeVersion,
-  tsconfig: {
-    compilerOptions: {
-      rootDir: '.',
-      paths: {
-        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
-      },
-    },
-    include: [`${cdkPath}/**/*.ts`],
-  },
-});
-
 new BackendTsProject({
   parent: monorepo,
-  name: 'backend',
+  name: "service-b",
   deps: [`${appNameSpace}/shared-lib@workspace:*`],
   cdkPath,
   cdkVersion,
@@ -105,7 +67,23 @@ new BackendTsProject({
   tsconfig: {
     compilerOptions: {
       paths: {
-        '@aws-cdk-nx-monorepo/shared-lib/*': ['../shared-lib/src/*'],
+        "@aws-cdk-nx-monorepo/shared-lib/*": ["../shared-lib/src/*"],
+      },
+    },
+  },
+});
+
+new BackendTsProject({
+  parent: monorepo,
+  name: "backend",
+  deps: [`${appNameSpace}/shared-lib@workspace:*`],
+  cdkPath,
+  cdkVersion,
+  defaultReleaseBranch,
+  tsconfig: {
+    compilerOptions: {
+      paths: {
+        "@aws-cdk-nx-monorepo/shared-lib/*": ["../shared-lib/src/*"],
       },
     },
   },
