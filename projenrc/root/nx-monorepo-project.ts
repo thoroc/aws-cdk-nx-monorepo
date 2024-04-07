@@ -5,14 +5,14 @@ import { VscodeSettings } from './vscode';
 import { PnpmWorkspace } from './pnpm';
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
-  // defaultReleaseBranch: string;
-  // packageManager: NodePackageManager;
+  pnpmVersion: string;
   cdkVersion: string;
   nodeVersion: string;
 }
 
 export class NxMonorepoProject extends typescript.TypeScriptProject {
   public nameSpace: string;
+  public pnpmVersion: string;
   public cdkVersion: string;
   public defaultReleaseBranch: string;
 
@@ -51,12 +51,18 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       },
     });
 
-    this.nameSpace = `@${props.name}`;
-    this.defaultReleaseBranch = props.defaultReleaseBranch;
-    this.cdkVersion = props.cdkVersion;
+    const { name, defaultReleaseBranch, cdkVersion, pnpmVersion } = props;
+
+    this.nameSpace = `@${name}`;
+    this.defaultReleaseBranch = defaultReleaseBranch;
+    this.cdkVersion = cdkVersion;
+    this.pnpmVersion = pnpmVersion;
   }
 
   preSynthesize(): void {
+    this.package.addField('packageManager', `pnpm@${this.pnpmVersion}`);
+    this.npmrc.addConfig('auto-install-peers', 'true');
+
     new PnpmWorkspace(this);
     new VscodeSettings(this);
     new Nx(this);

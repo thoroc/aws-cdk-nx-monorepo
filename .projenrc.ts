@@ -1,6 +1,5 @@
 import { javascript, typescript, awscdk } from 'projen';
-import { BackendTsProject } from './projenrc/backend-project';
-import { NxMonorepoProject } from './projenrc/nx-monorepo-project';
+import { NxMonorepoProject, BackendTsProject } from './projenrc';
 
 const defaultReleaseBranch = 'main';
 const cdkVersion = '2.61.1';
@@ -16,6 +15,7 @@ const root = new NxMonorepoProject({
   packageManager: javascript.NodePackageManager.PNPM,
   cdkVersion,
   nodeVersion,
+  pnpmVersion,
 });
 
 // root
@@ -111,11 +111,7 @@ new BackendTsProject({
   },
 });
 
-root.package.addField('packageManager', `pnpm@${pnpmVersion}`);
-root.npmrc.addConfig('auto-install-peers', 'true');
-
-// new PnpmWorkspace(root);
-// new VscodeSettings(root);
-// new Nx(root);
+// root.package.addField('packageManager', `pnpm@${pnpmVersion}`);
+// root.npmrc.addConfig('auto-install-peers', 'true');
 
 root.synth(); // Synthesize all projects

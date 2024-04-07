@@ -1,13 +1,17 @@
 import { awscdk } from 'projen';
-import { NxMonorepoProject } from './nx-monorepo-project';
+import { NxMonorepoProject } from '../root/nx-monorepo-project';
+import { JestConfigTs } from './jest-config';
 
-interface BackendTsProjectOptions extends awscdk.AwsCdkTypeScriptAppOptions {
+export interface NxMonorepoChildProjectOptions
+  extends awscdk.AwsCdkTypeScriptAppOptions {
   parent: NxMonorepoProject;
   cdkPath: string;
 }
 
-export class BackendTsProject extends awscdk.AwsCdkTypeScriptApp {
-  constructor(props: BackendTsProjectOptions) {
+export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
+  public displayName: string;
+
+  constructor(props: NxMonorepoChildProjectOptions) {
     super({
       ...props,
       name: `${props.parent.nameSpace}/${props.name}`,
@@ -32,5 +36,11 @@ export class BackendTsProject extends awscdk.AwsCdkTypeScriptApp {
         include: [`${props.cdkPath}/**/*.ts`],
       },
     });
+
+    this.displayName = props.name;
+  }
+
+  preSynthesize(): void {
+    new JestConfigTs(this);
   }
 }
