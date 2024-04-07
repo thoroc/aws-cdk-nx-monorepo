@@ -10,6 +10,7 @@
     ".projen/files.json",
     ".projen/tasks.json",
     ".vscode/settings.json",
+    "eslint.config.js",
     "jest.config.ts",
     "jest.preset.js",
     "nx.json",

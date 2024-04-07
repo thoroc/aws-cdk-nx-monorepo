@@ -1,11 +1,23 @@
 {
   "dependencies": [
     {
+      "name": "@eslint/eslintrc",
+      "type": "build"
+    },
+    {
+      "name": "@eslint/js",
+      "type": "build"
+    },
+    {
       "name": "@nrwl/devkit",
       "type": "build"
     },
     {
       "name": "@nrwl/workspace",
+      "type": "build"
+    },
+    {
+      "name": "@nx/eslint-plugin",
       "type": "build"
     },
     {
@@ -26,8 +38,24 @@
       "type": "build"
     },
     {
+      "name": "@typescript-eslint/eslint-plugin",
+      "type": "build"
+    },
+    {
+      "name": "@typescript-eslint/parser",
+      "type": "build"
+    },
+    {
       "name": "constructs",
       "version": "^10.0.0",
+      "type": "build"
+    },
+    {
+      "name": "eslint",
+      "type": "build"
+    },
+    {
+      "name": "eslint-plugin-cdk",
       "type": "build"
     },
     {

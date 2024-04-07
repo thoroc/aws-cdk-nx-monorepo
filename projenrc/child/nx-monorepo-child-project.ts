@@ -27,7 +27,6 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
       appEntrypoint: `${props.cdkPath}/bin/main.ts`,
       watchIncludes: [`${props.cdkPath}/**/*.ts`],
       jest: false,
-      // disableTsconfig: true,
       tsconfig: {
         extends: TypescriptConfigExtends.fromPaths([
           '../../tsconfig.base.json',
@@ -47,6 +46,7 @@ export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
     });
 
     this.displayName = props.name;
+    (this.parent as NxMonorepoProject)?.childProjects.push(this);
   }
 
   preSynthesize(): void {

@@ -2,6 +2,8 @@ import { typescript } from 'projen';
 import { Nx } from './nx';
 import { VscodeSettings } from './vscode';
 import { PnpmWorkspace } from './pnpm';
+import { EslintFlatConfig } from './eslint-config';
+import { NxMonorepoChildProject } from '../child/nx-monorepo-child-project';
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   pnpmVersion: string;
@@ -14,6 +16,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
   public pnpmVersion: string;
   public cdkVersion: string;
   public defaultReleaseBranch: string;
+  public childProjects: NxMonorepoChildProject[] = [];
 
   constructor(props: NxMonorepoProjectOptions) {
     super({
@@ -72,6 +75,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
     this.defaultReleaseBranch = defaultReleaseBranch;
     this.cdkVersion = cdkVersion;
     this.pnpmVersion = pnpmVersion;
+    this.childProjects = [];
   }
 
   preSynthesize(): void {
@@ -81,5 +85,6 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
     new PnpmWorkspace(this);
     new VscodeSettings(this);
     new Nx(this);
+    new EslintFlatConfig(this);
   }
 }
