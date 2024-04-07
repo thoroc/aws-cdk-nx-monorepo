@@ -34,6 +34,8 @@ export class Nx extends Component {
           default: ['{projectRoot}/**/*', 'sharedGlobals'],
           production: [
             'default',
+            '!{projectRoot}/.eslintrc.json',
+            '!{projectRoot}/eslint.config.js',
             '!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)',
             '!{projectRoot}/jest.config.[jt]s',
             '!{projectRoot}/src/test-setup.[jt]s',
@@ -76,6 +78,12 @@ export class Nx extends Component {
         },
 
         plugins: [
+          {
+            plugin: '@nx/eslint/plugin',
+            options: {
+              targetName: 'lint',
+            },
+          },
           {
             plugin: '@nx/jest/plugin',
             options: {
