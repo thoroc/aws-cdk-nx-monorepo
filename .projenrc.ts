@@ -1,5 +1,6 @@
-import { javascript, typescript } from "projen";
+import { javascript } from "projen";
 import { NxMonorepoProject, BackendTsProject } from "./projenrc";
+import { NxMonorepoTsChildProject } from "./projenrc/child/nx-monorepo-ts-project";
 
 const defaultReleaseBranch = "main";
 const cdkVersion = "2.61.1";
@@ -23,19 +24,24 @@ const monorepo = new NxMonorepoProject({
 //   ?.addOverride('include', ['packages/**/*']);
 
 // Defines the subproject for shared lib
-const sharedLib = new typescript.TypeScriptProject({
+const sharedLib = new NxMonorepoTsChildProject({
   parent: monorepo,
-  name: `${appNameSpace}/shared-lib`,
-  outdir: "./packages/shared-lib",
+  name: "shared-lib",
   defaultReleaseBranch,
-  sampleCode: false,
-  licensed: false,
-
-  // Use same settings from monorepo project
-  packageManager: monorepo.package.packageManager,
-  projenCommand: monorepo.projenCommand,
-  minNodeVersion: monorepo.minNodeVersion,
 });
+// const sharedLib = new typescript.TypeScriptProject({
+//   parent: monorepo,
+//   name: `${appNameSpace}/shared-lib`,
+//   outdir: "./packages/shared-lib",
+//   defaultReleaseBranch,
+//   sampleCode: false,
+//   licensed: false,
+
+//   // Use same settings from monorepo project
+//   packageManager: monorepo.package.packageManager,
+//   projenCommand: monorepo.projenCommand,
+//   minNodeVersion: monorepo.minNodeVersion,
+// });
 
 // Defines the subproject for 'service-a'
 new BackendTsProject({

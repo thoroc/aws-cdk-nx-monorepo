@@ -4,16 +4,16 @@ import { JestConfigTs } from "./jest-config";
 import { TypescriptConfigExtends } from "projen/lib/javascript";
 import { tsConfigApp, tsConfigSpec } from "./tsconfig";
 
-export interface NxMonorepoChildProjectOptions
+export interface NxMonorepoAwsCdkChildProjectOptions
   extends awscdk.AwsCdkTypeScriptAppOptions {
   parent: NxMonorepoProject;
   cdkPath: string;
 }
 
-export class NxMonorepoChildProject extends awscdk.AwsCdkTypeScriptApp {
+export class NxMonorepoAwsCdkChildProject extends awscdk.AwsCdkTypeScriptApp {
   public displayName: string;
 
-  constructor(props: NxMonorepoChildProjectOptions) {
+  constructor(props: NxMonorepoAwsCdkChildProjectOptions) {
     super({
       ...props,
       name: `${props.parent.nameSpace}/${props.name}`,

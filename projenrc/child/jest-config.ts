@@ -1,11 +1,14 @@
-import { Component, SourceCode } from 'projen';
-import { NxMonorepoChildProject } from './nx-monorepo-child-project';
+import { Component, SourceCode } from "projen";
+import { NxMonorepoAwsCdkChildProject } from "./nx-monorepo-cdk-project";
+import { NxMonorepoTsChildProject } from "./nx-monorepo-ts-project";
 
 export class JestConfigTs extends Component {
-  constructor(project: NxMonorepoChildProject) {
+  constructor(
+    project: NxMonorepoAwsCdkChildProject | NxMonorepoTsChildProject,
+  ) {
     super(project);
 
-    new SourceCode(project, 'jest.config.ts', {}).line(
+    new SourceCode(project, "jest.config.ts", {}).line(
       `/* eslint-disable */
 export default {
   displayName: '${project.displayName}',
@@ -16,7 +19,7 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/packages/${project.displayName}',
-};`
+};`,
     );
   }
 }

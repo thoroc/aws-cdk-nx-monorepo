@@ -1,10 +1,10 @@
 import {
-  NxMonorepoChildProject,
-  NxMonorepoChildProjectOptions,
-} from './nx-monorepo-child-project';
+  NxMonorepoAwsCdkChildProject,
+  NxMonorepoAwsCdkChildProjectOptions,
+} from "./nx-monorepo-cdk-project";
 
-export class BackendTsProject extends NxMonorepoChildProject {
-  constructor(props: NxMonorepoChildProjectOptions) {
+export class BackendTsProject extends NxMonorepoAwsCdkChildProject {
+  constructor(props: NxMonorepoAwsCdkChildProjectOptions) {
     super(props);
   }
 }

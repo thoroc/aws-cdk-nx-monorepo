@@ -3,7 +3,8 @@ import { Nx } from "./nx";
 import { VscodeSettings } from "./vscode";
 import { PnpmWorkspace } from "./pnpm";
 import { EslintFlatConfig } from "./eslint-config";
-import { NxMonorepoChildProject } from "../child/nx-monorepo-child-project";
+import { NxMonorepoAwsCdkChildProject } from "../child/nx-monorepo-cdk-project";
+import { NxMonorepoTsChildProject } from "../child/nx-monorepo-ts-project";
 
 interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   pnpmVersion: string;
@@ -11,12 +12,16 @@ interface NxMonorepoProjectOptions extends typescript.TypeScriptProjectOptions {
   nodeVersion: string;
 }
 
+type NxMonorepoChildProject =
+  | NxMonorepoAwsCdkChildProject
+  | NxMonorepoTsChildProject;
+
 export class NxMonorepoProject extends typescript.TypeScriptProject {
   public nameSpace: string;
   public pnpmVersion: string;
   public cdkVersion: string;
   public defaultReleaseBranch: string;
-  public childProjects: NxMonorepoChildProject[] = [];
+  public childProjects: NxMonorepoChildProject[];
 
   constructor(props: NxMonorepoProjectOptions) {
     super({

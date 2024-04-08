@@ -28,14 +28,11 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-/test-reports/
-junit.xml
-/coverage/
 !/.npmrc
 !/test/
 !/tsconfig.json
-!/tsconfig.dev.json
 !/src/
 /lib
 /dist/
-!/.eslintrc.json
+!/eslint.config.js
+!/jest.config.ts

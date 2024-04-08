@@ -1,8 +1,8 @@
 import { Component, JsonFile } from "projen";
-import { NxMonorepoChildProject } from "./nx-monorepo-child-project";
+import { NxMonorepoAwsCdkChildProject } from "./nx-monorepo-cdk-project";
 
 export class tsConfig extends Component {
-  constructor(project: NxMonorepoChildProject) {
+  constructor(project: NxMonorepoAwsCdkChildProject) {
     super(project);
 
     new JsonFile(project, "tsconfig.spec.json", {
@@ -27,7 +27,7 @@ export class tsConfig extends Component {
 }
 
 export class tsConfigSpec extends Component {
-  constructor(project: NxMonorepoChildProject) {
+  constructor(project: NxMonorepoAwsCdkChildProject) {
     super(project);
 
     new JsonFile(project, "tsconfig.spec.json", {
@@ -50,7 +50,7 @@ export class tsConfigSpec extends Component {
 }
 
 export class tsConfigApp extends Component {
-  constructor(project: NxMonorepoChildProject) {
+  constructor(project: NxMonorepoAwsCdkChildProject) {
     super(project);
 
     new JsonFile(project, "tsconfig.app.json", {
