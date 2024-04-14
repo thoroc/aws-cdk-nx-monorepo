@@ -24,7 +24,7 @@ export class NxMonorepoAwsCdkChildProject extends awscdk.AwsCdkTypeScriptApp {
       licensed: false,
       eslint: false,
       requireApproval: awscdk.ApprovalLevel.NEVER,
-      appEntrypoint: `${props.cdkPath}/bin/main.ts`,
+      appEntrypoint: `./${props.cdkPath}/bin/main.ts`,
       watchIncludes: [`${props.cdkPath}/**/*.ts`],
       jest: false,
       tsconfig: {
