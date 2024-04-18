@@ -9,6 +9,11 @@ const pnpmVersion = "8.6.0";
 const appNameSpace = "@aws-cdk-nx-monorepo";
 const cdkPath = "cdk";
 
+const stackOptions = {
+  awsAccount: "123456789012",
+  awsRegion: "us-east-1",
+};
+
 // Defines the root of the monorepo that will contain other subprojects packages
 const monorepo = new NxMonorepoProject({
   name: "aws-cdk-nx-monorepo",
@@ -51,6 +56,9 @@ new BackendTsProject({
   cdkPath,
   cdkVersion,
   defaultReleaseBranch,
+  sampleCode: true,
+  stackNames: ["Service A", "Service B"],
+  stackOptions,
   tsconfig: {
     compilerOptions: {
       rootDir: ".",
@@ -70,6 +78,7 @@ new BackendTsProject({
   cdkPath,
   cdkVersion,
   defaultReleaseBranch,
+  stackOptions,
   tsconfig: {
     compilerOptions: {
       paths: {
@@ -86,6 +95,7 @@ new BackendTsProject({
   cdkPath,
   cdkVersion,
   defaultReleaseBranch,
+  stackOptions,
   tsconfig: {
     compilerOptions: {
       paths: {

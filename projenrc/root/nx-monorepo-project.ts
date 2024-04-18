@@ -47,7 +47,7 @@ export class NxMonorepoProject extends typescript.TypeScriptProject {
       buildWorkflow: false,
       release: false,
 
-      devDeps: ["@nx/node", "@nx/js", "@nx/workspace", "nx"],
+      devDeps: ["@nx/node", "@nx/js", "@nx/workspace", "nx", "change-case-all"],
 
       disableTsconfig: true,
       tsconfigDevFile: "tsconfig.base.json",

@@ -1,10 +1,16 @@
 # AWS Website project
 
+## Useful Commands
+
+* Synthesize project: `pnpm projen`
+* Build projects: `pnpm projen build`
+
 ## todo
 
 * look at <https://github.com/adrian-goe/nx-aws-cdk-v2>
 * look at <https://aws.github.io/aws-pdk/overview/index.html>
 * look at <https://github.com/projen/projen>
+* look at <https://github.com/rehanvdm/pets-frontend-v2> and <https://github.com/rehanvdm/pets-backend-v2>
 
 ## tips
 

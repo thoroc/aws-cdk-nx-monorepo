@@ -53,6 +53,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.4)
+      change-case-all:
+        specifier: ^2.1.0
+        version: 2.1.0
       constructs:
         specifier: ^10.0.0
         version: 10.3.0
@@ -103,7 +106,7 @@ importers:
         version: link:../shared-lib
       aws-cdk-lib:
         specifier: ^2.61.1
-        version: 2.136.0(constructs@10.3.0)
+        version: 2.137.0(constructs@10.3.0)
       constructs:
         specifier: ^10.0.5
         version: 10.3.0
@@ -112,19 +115,19 @@ importers:
         specifier: ^18
         version: 18.19.30
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.4)
       '@typescript-eslint/parser':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.4)
       aws-cdk:
         specifier: ^2.61.1
-        version: 2.136.0
+        version: 2.137.0
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
       eslint:
-        specifier: ^8
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-plugin-cdk:
         specifier: ^1.8.0
@@ -146,7 +149,7 @@ importers:
         version: link:../shared-lib
       aws-cdk-lib:
         specifier: ^2.61.1
-        version: 2.136.0(constructs@10.3.0)
+        version: 2.137.0(constructs@10.3.0)
       constructs:
         specifier: ^10.0.5
         version: 10.3.0
@@ -155,19 +158,19 @@ importers:
         specifier: ^18
         version: 18.19.30
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.4)
       '@typescript-eslint/parser':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.4)
       aws-cdk:
         specifier: ^2.61.1
-        version: 2.136.0
+        version: 2.137.0
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
       eslint:
-        specifier: ^8
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-plugin-cdk:
         specifier: ^1.8.0
@@ -189,7 +192,7 @@ importers:
         version: link:../shared-lib
       aws-cdk-lib:
         specifier: ^2.61.1
-        version: 2.136.0(constructs@10.3.0)
+        version: 2.137.0(constructs@10.3.0)
       constructs:
         specifier: ^10.0.5
         version: 10.3.0
@@ -198,19 +201,19 @@ importers:
         specifier: ^18
         version: 18.19.30
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.4)
       '@typescript-eslint/parser':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.4)
       aws-cdk:
         specifier: ^2.61.1
-        version: 2.136.0
+        version: 2.137.0
       esbuild:
         specifier: ^0.20.2
         version: 0.20.2
       eslint:
-        specifier: ^8
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-plugin-cdk:
         specifier: ^1.8.0
@@ -231,16 +234,16 @@ importers:
         specifier: ^18
         version: 18.19.30
       '@typescript-eslint/eslint-plugin':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)(typescript@5.4.4)
       '@typescript-eslint/parser':
-        specifier: ^6
+        specifier: ^6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.4.4)
       constructs:
         specifier: ^10.0.0
         version: 10.3.0
       eslint:
-        specifier: ^8
+        specifier: ^8.57.0
         version: 8.57.0
       eslint-plugin-cdk:
         specifier: ^1.8.0
@@ -3120,8 +3123,8 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: true
 
-  /aws-cdk-lib@2.136.0(constructs@10.3.0):
-    resolution: {integrity: sha512-zdkWNe91mvZH6ESghUoIxB8ORoreExg2wowTLEVfy3vWY1a6n69crxk8mkCG+vn6GhXEnEPpovoG1QV8BpXTpA==}
+  /aws-cdk-lib@2.137.0(constructs@10.3.0):
+    resolution: {integrity: sha512-pD3AGdKBa8q1+vVWRabiDHuecVMlP8ERGPHc9Pb0dVlpbC/ODC6XXC1S0TAMsr0JI5Lh6pk4vL5cC+spsMeotw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -3144,8 +3147,8 @@ packages:
       - yaml
       - mime-types
 
-  /aws-cdk@2.136.0:
-    resolution: {integrity: sha512-MVSE+AERoP0D1qXlkhKQOzs22QVulGleX1yJTkWzoYhEyseEmR8EiFJcmyEhJku/swmY0KDpVlT9R62dRG5+JQ==}
+  /aws-cdk@2.137.0:
+    resolution: {integrity: sha512-3pf3SVDwNZvo3EfhO3yl1B+KbRHz7T4UmPifUEKfOwk7ABAFLRSNddZuUlF560XSBTFLkrZoeBDa0/MLJT6F4g==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
@@ -3420,6 +3423,19 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
+
+  /change-case-all@2.1.0:
+    resolution: {integrity: sha512-v6b0WWWkZUMHVuYk82l+WROgkUm4qEN2w5hKRNWtEOYwWqUGoi8C6xH0l1RLF1EoWqDFK6MFclmN3od6ws3/uw==}
+    dependencies:
+      change-case: 5.4.4
+      sponge-case: 2.0.3
+      swap-case: 3.0.3
+      title-case: 3.0.3
+    dev: true
+
+  /change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
     dev: true
 
   /char-regex@1.0.2:
@@ -5737,6 +5753,10 @@ packages:
     resolution: {integrity: sha512-sh8PWc/ftMqAAdFiBu6Fy6JUOYjqDJBJvIhpfDMyHrr0Rbp5liZqd4TjtQ/RgfLjKFZb+LMx5hpml5qOWy0qvg==}
     dev: true
 
+  /sponge-case@2.0.3:
+    resolution: {integrity: sha512-i4h9ZGRfxV6Xw3mpZSFOfbXjf0cQcYmssGWutgNIfFZ2VM+YIWfD71N/kjjwK6X/AAHzBr+rciEcn/L34S8TGw==}
+    dev: true
+
   /sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: true
@@ -5834,6 +5854,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /swap-case@3.0.3:
+    resolution: {integrity: sha512-6p4op8wE9CQv7uDFzulI6YXUw4lD9n4oQierdbFThEKVWVQcbQcUjdP27W8XE7V4QnWmnq9jueSHceyyQnqQVA==}
+    dev: true
+
   /tar-stream@2.2.0:
     resolution: {integrity: sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==}
     engines: {node: '>=6'}
@@ -5860,6 +5884,12 @@ packages:
 
   /through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
+    dev: true
+
+  /title-case@3.0.3:
+    resolution: {integrity: sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==}
+    dependencies:
+      tslib: 2.6.2
     dev: true
 
   /tmp@0.2.3:

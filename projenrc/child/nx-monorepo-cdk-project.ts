@@ -4,14 +4,27 @@ import { JestConfigTs } from "./jest-config";
 import { TypescriptConfigExtends } from "projen/lib/javascript";
 import { tsConfigApp, tsConfigSpec } from "./tsconfig";
 
+export interface StackOptions {
+  awsAccount: string;
+  awsRegion: string;
+}
+
 export interface NxMonorepoAwsCdkChildProjectOptions
   extends awscdk.AwsCdkTypeScriptAppOptions {
   parent: NxMonorepoProject;
   cdkPath: string;
+  sampleCode?: boolean;
+  stackNames?: string[];
+  stackOptions: StackOptions;
 }
 
 export class NxMonorepoAwsCdkChildProject extends awscdk.AwsCdkTypeScriptApp {
   public displayName: string;
+  cdkPath: string;
+  sampleCode: boolean;
+  stackNames: string[];
+  awsRegion: string;
+  awsAccount: string;
 
   constructor(props: NxMonorepoAwsCdkChildProjectOptions) {
     super({
@@ -24,7 +37,7 @@ export class NxMonorepoAwsCdkChildProject extends awscdk.AwsCdkTypeScriptApp {
       licensed: false,
       eslint: false,
       requireApproval: awscdk.ApprovalLevel.NEVER,
-      appEntrypoint: `./${props.cdkPath}/bin/main.ts`,
+      // appEntrypoint: `./${props.cdkPath}/bin/main.ts`,
       watchIncludes: [`${props.cdkPath}/**/*.ts`],
       jest: false,
       tsconfig: {
@@ -46,6 +59,11 @@ export class NxMonorepoAwsCdkChildProject extends awscdk.AwsCdkTypeScriptApp {
     });
 
     this.displayName = props.name;
+    this.cdkPath = props.cdkPath;
+    this.sampleCode = props.sampleCode ?? true;
+    this.stackNames = props.stackNames ?? ["Sample A", "Sample B"];
+    this.awsAccount = props.stackOptions.awsAccount;
+    this.awsRegion = props.stackOptions.awsRegion;
     (this.parent as NxMonorepoProject)?.childProjects.push(this);
   }
 

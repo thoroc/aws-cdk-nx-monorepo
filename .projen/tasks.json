@@ -149,13 +149,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@eslint/eslintrc,@eslint/js,@nrwl/devkit,@nrwl/workspace,@nx/eslint,@nx/eslint-plugin,@nx/jest,@nx/js,@nx/linter,@nx/node,@nx/workspace,@types/jest,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint,eslint-config-prettier,eslint-plugin-cdk,eslint-plugin-jest,jest,jest-environment-node,nx,prettier,prettier-plugin-organize-imports,projen,ts-jest,ts-node,typescript"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@eslint/eslintrc,@eslint/js,@nrwl/devkit,@nrwl/workspace,@nx/eslint,@nx/eslint-plugin,@nx/jest,@nx/js,@nx/linter,@nx/node,@nx/workspace,@types/jest,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,change-case-all,eslint,eslint-config-prettier,eslint-plugin-cdk,eslint-plugin-jest,jest,jest-environment-node,nx,prettier,prettier-plugin-organize-imports,projen,ts-jest,ts-node,typescript"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @eslint/eslintrc @eslint/js @nrwl/devkit @nrwl/workspace @nx/eslint @nx/eslint-plugin @nx/jest @nx/js @nx/linter @nx/node @nx/workspace @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint eslint-config-prettier eslint-plugin-cdk eslint-plugin-jest jest jest-environment-node nx prettier prettier-plugin-organize-imports projen ts-jest ts-node typescript"
+          "exec": "pnpm update @eslint/eslintrc @eslint/js @nrwl/devkit @nrwl/workspace @nx/eslint @nx/eslint-plugin @nx/jest @nx/js @nx/linter @nx/node @nx/workspace @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser change-case-all constructs eslint eslint-config-prettier eslint-plugin-cdk eslint-plugin-jest jest jest-environment-node nx prettier prettier-plugin-organize-imports projen ts-jest ts-node typescript"
         },
         {
           "exec": "pnpm dlx projen"

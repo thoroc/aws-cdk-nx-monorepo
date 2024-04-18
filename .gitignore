@@ -40,6 +40,7 @@ jspm_packages/
 /dist/
 !/pnpm-workspace.yaml
 !/.vscode/settings.json
+!/.vscode/extensions.json
 !/nx.json
 .nx
 !/eslint.config.js
