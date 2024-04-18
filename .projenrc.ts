@@ -34,19 +34,6 @@ const sharedLib = new NxMonorepoTsChildProject({
   name: "shared-lib",
   defaultReleaseBranch,
 });
-// const sharedLib = new typescript.TypeScriptProject({
-//   parent: monorepo,
-//   name: `${appNameSpace}/shared-lib`,
-//   outdir: "./packages/shared-lib",
-//   defaultReleaseBranch,
-//   sampleCode: false,
-//   licensed: false,
-
-//   // Use same settings from monorepo project
-//   packageManager: monorepo.package.packageManager,
-//   projenCommand: monorepo.projenCommand,
-//   minNodeVersion: monorepo.minNodeVersion,
-// });
 
 // Defines the subproject for 'service-a'
 new BackendTsProject({
