@@ -1,3 +1,4 @@
-export * from "./child/backend-project";
-export * from "./child/nx-monorepo-cdk-project";
-export * from "./root/nx-monorepo-project";
+export * from "./projects";
+export * from "./components";
+export * from "./nx-monorepo-project";
+export * from "./sample-files";

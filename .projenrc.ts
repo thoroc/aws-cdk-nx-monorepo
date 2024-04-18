@@ -1,6 +1,6 @@
 import { javascript } from "projen";
 import { NxMonorepoProject, BackendTsProject } from "./projenrc";
-import { NxMonorepoTsChildProject } from "./projenrc/child/nx-monorepo-ts-project";
+import { NxMonorepoTsChildProject } from "./projenrc";
 
 const defaultReleaseBranch = "main";
 const cdkVersion = "2.61.1";
